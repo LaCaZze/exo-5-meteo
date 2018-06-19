@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <h1>re</h1>
+    <ul id="recuperation"></ul>
+    <script>
+
+        jQuery(document).ready(function () {
+
+            $.ajax({
+                url: 'http://localhost:3095/meteo', // La ressource ciblée
+                type: 'GET', //type de requette. Ici un port n'a pas de sens on a rien a envoyer au sreveur
+                //GET type par défaut, normalement pas besoin de le préciser
+
+                success: function (data) {
+                    for (var id in data) {
+                        $('#recuperation').append('<li>' + data[id].name.first + ' ' + data[id].name.last + '</li>')
+                        console.log(data[id].name.first + ' ' + data[id].name.last);
+                    }
+                }
+            });
+
+        });
+
+//TO DO : reprendre ce qui est retourné par le success et l'utiliser dans un each()
+// ou faire une boucle for pour reccupéré la class list pour afficher la liste
+
+
+    </script>
+
+
+</body>
+
+</html>
