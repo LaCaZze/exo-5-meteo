@@ -10,19 +10,33 @@ app.get('/', function (req, res) {
 })
 
 // Route qui pointe vers la recuperation des données JSON
-app.get('/meteo', function (req, res) {
-    // response.send('http://api.openweathermap.org/data/2.5/weather?q=paris&appid=5b845a23575745f32f6044910b548fa7');
+// app.get('/meteo', function (req, res) {
+//     // response.send('http://api.openweathermap.org/data/2.5/weather?q=paris&appid=5b845a23575745f32f6044910b548fa7');
 
-    request('http://api.openweathermap.org/data/2.5/weather?q=paris&appid=5b845a23575745f32f6044910b548fa7', function (error, response, body) {
-        console.log('error:', error); // Print the error if one occurred
-        console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
-        console.log('body:', body); // Print the HTML for the Google homepage.
+//     request('http://api.openweathermap.org/data/2.5/weather?q=paris&appid=5b845a23575745f32f6044910b548fa7', function (error, response, body) {
+//         console.log('error:', error); // Print the error if one occurred
+//         console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
+//         console.log('body:', body); // Print the HTML for the Google homepage.
 
-        res.json(JSON.parse(body));
+//         res.json(JSON.parse(body));
 
+app.get('/meteo/reunion', function (req, res) {
+
+    let request = require('request');
+
+    let apiKey = '5b845a23575745f32f6044910b548fa7'
+    let city = 'reunion';
+    let url = `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`
+
+    request(url, function (err, response, body) {
+        if (err) {
+            console.log('error:', error);
+        } else {
+            console.log('body:', body);
+        }
+        res.send(response)
     });
 
-    
 
 });
 
@@ -31,4 +45,10 @@ app.get('/meteo', function (req, res) {
 
 
 
-app.listen(3095)
+
+
+
+
+app.listen(3093)
+
+

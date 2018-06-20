@@ -10,32 +10,12 @@
 
 <body>
 
-    <h1>re</h1>
-    <ul id="recuperation"></ul>
-    <script>
+    <h1>salut</h1>
+    <div id="recuperation"></div>
 
-        jQuery(document).ready(function () {
-
-            $.ajax({
-                url: 'http://localhost:3095/meteo', // La ressource ciblée
-                type: 'GET', //type de requette. Ici un port n'a pas de sens on a rien a envoyer au sreveur
-                //GET type par défaut, normalement pas besoin de le préciser
-
-                success: function (data) {
-                    for (var id in data) {
-                        $('#recuperation').append('<li>' + data[id].name.first + ' ' + data[id].name.last + '</li>')
-                        console.log(data[id].name.first + ' ' + data[id].name.last);
-                    }
-                }
-            });
-
-        });
-
-//TO DO : reprendre ce qui est retourné par le success et l'utiliser dans un each()
-// ou faire une boucle for pour reccupéré la class list pour afficher la liste
-
-
-    </script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+    <script src="static/js/API.js"></script>
 
 
 </body>
